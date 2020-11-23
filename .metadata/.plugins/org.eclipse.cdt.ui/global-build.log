@@ -1,5 +1,4 @@
-10:27:51 **** Rebuild of configuration Debug for project SP_Labo1 ****
+12:14:25 **** Incremental Build of configuration Debug for project SP_Labo1 ****
 Info: Internal Builder is used for build
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\SP_Labo1.o" "..\\src\\SP_Labo1.c" 
 gcc -o SP_Labo1.exe "src\\SP_Labo1.o" 
-Info: Nothing to build for SP_Labo1
