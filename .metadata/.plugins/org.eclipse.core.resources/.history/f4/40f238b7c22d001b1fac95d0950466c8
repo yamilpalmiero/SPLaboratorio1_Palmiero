@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "LinkedList.h"
+#include "Articulo.h"
+#include "Controller.h"
+#include "Parser.h"
+#include "utn.h"
+
+int parser_ArticuloFromText(FILE *pFile, LinkedList *pListaArticulos) {
+	int retorno = -1;
+	int flag = 0;
+	char bufferId[20];
+	char bufferArticulo[20];
+	char bufferMedida[20];
+	char bufferPrecio[20];
+	char bufferIdRubro[20];
+	eArticulo *bufferArt; //Puntero al elemento donde se van a cargar los campos con su tipo de dato correspondiente
+
+	while (!feof(pFile)) { //Mientras el archivo no llegue al final hace esto: borra las comas y guarda los campos en un buffer
+		fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^\n]\n", bufferId,
+				bufferArticulo, bufferMedida, bufferPrecio, bufferIdRubro);
+		if (flag == 0) {
+			flag++;
+			continue;
+		}
+		bufferArt = articulo_newParametros(bufferId, bufferArticulo,
+				bufferMedida, bufferPrecio, bufferIdRubro); //Carga los campos en el buffer pero con la funcion los pasa a su tipo correspondiente
+		if (bufferArt != NULL)
+			ll_add(pListaArticulos, bufferArt); //Agrego el elemento a la LinkedList
+	}
+	retorno = 0;
+}
+
+return retorno;
+}

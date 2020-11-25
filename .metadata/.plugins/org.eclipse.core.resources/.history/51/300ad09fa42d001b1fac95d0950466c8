@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "LinkedList.h"
+#include "Articulo.h"
+
+
+int main(void) {
+	setbuf(stdout, NULL);
+
+
+
+	return EXIT_SUCCESS;
+}

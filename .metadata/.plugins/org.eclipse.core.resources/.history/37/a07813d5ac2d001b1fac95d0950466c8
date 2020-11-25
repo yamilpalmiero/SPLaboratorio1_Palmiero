@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "LinkedList.h"
+#include "Articulo.h"
+#include "utn.h"
+
+int controller_cargaDesdeArchivo(char *path, LinkedList *pListaArticulos) {
+	int retorno = -1;
+	FILE *pArchivo = NULL;
+	int cantidad;
+
+	if (path != NULL && pListaArticulos != NULL) {
+		if ((pArchivo = fopen(path, "r")) == NULL)
+			printf("\nNo se pudo abrir el archivo");
+		exit(1);
+	}
+	while(!feof(pArchivo)){//Si todavia no llego al final hace lo siguiente
+		cantidad = fread
+	}
+
+	return retorno;
+}

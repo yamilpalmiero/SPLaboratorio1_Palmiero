@@ -1,0 +1,20 @@
+#ifndef ARTICULO_H_
+#define ARTICULO_H_
+
+typedef struct{
+	int id; //PK
+	char descripcion[51];
+} eRubro;
+
+typedef struct {
+	int id; //PK
+	char articulo[51];
+	int medida;
+	float precio;
+	int idRubro; //FK
+} eArticulo;
+
+#endif /* ARTICULO_H_ */
+
+
+eArticulo new_articulo(void);

@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "LinkedList.h"
+#include "Articulo.h"
+#include "Controller.h"
+#include "Parser.h"
+#include "utn.h"
+
+int parser_ArticuloFromText(FILE *pFile, LinkedList *pListaArticulos) {
+	int retorno = -1;
+	char bufferId[2000];
+	char bufferArticulo[2000];
+	char bufferMedida[2000];
+	char bufferPrecio[2000];
+	char bufferIdRubro[2000];
+	eArticulo *bufferArt;
+
+	if (pFile != NULL) {
+		while (!feof(pFile)) {
+			fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", bufferId, //Voy a buscar todas las comas y las niego
+					bufferArticulo, bufferMedida, bufferPrecio, bufferIdRubro);
+			bufferArt = articulo_newParametros(bufferId, bufferArticulo,
+					bufferMedida, bufferPrecio, bufferIdRubro);
+			if (bufferArt != NULL)
+				ll_add(pListaArticulos, bufferArt);
+		}
+		retorno = 0;
+	}
+
+	return retorno;
+}

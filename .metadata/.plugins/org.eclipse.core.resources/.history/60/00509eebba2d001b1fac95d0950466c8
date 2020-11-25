@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "LinkedList.h"
+#include "Articulo.h"
+#include "Controller.h"
+#include "Parser.h"
+#include "utn.h"
+
+int parser_ArticuloFromText(FILE *pFile, LinkedList *pListaArticulos) {
+	int retorno = -1;
+	char bufferId[20];
+	char bufferArticulo[20];
+	char bufferMedida[20];
+	char bufferPrecio[20];
+	char bufferIdRubro[20];
+	eArticulo *bufferArt; //Puntero al elemento donde se van a cargar los campos con su tipo de dato correspondiente
+
+	if (pFile != NULL) {
+		fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", bufferId, //Lectura fantasma del parseo porque mi csv SI tiene titulos (primera linea). Ademas niego las comas
+				bufferArticulo, bufferMedida, bufferPrecio, bufferIdRubro);
+		while (!feof(pFile)) {
+			fscanf(pFile, "%[^,],%[^,],%[^,],%[^\n]\n", bufferId, //Lectura real del archivo de texto (sin titulos). Ademas niego las comas
+					bufferArticulo, bufferMedida, bufferPrecio, bufferIdRubro);
+			bufferArt = articulo_newParametros(bufferId, bufferArticulo,
+					bufferMedida, bufferPrecio, bufferIdRubro);
+			if (bufferArt != NULL)
+				ll_add(pListaArticulos, bufferArt); //Agrego el elemento a la LinkedList
+		}
+		retorno = 0;
+	}
+
+	return retorno;
+}

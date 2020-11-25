@@ -1,4 +1,13 @@
-12:14:25 **** Incremental Build of configuration Debug for project SP_Labo1 ****
+16:53:00 **** Rebuild of configuration Debug for project SP_Labo1 ****
 Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\LinkedList.o" "..\\src\\LinkedList.c" 
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\SP_Labo1.o" "..\\src\\SP_Labo1.c" 
-gcc -o SP_Labo1.exe "src\\SP_Labo1.o" 
+..\src\SP_Labo1.c: In function 'main':
+..\src\SP_Labo1.c:16:9: warning: unused variable 'arrayRubros' [-Wunused-variable]
+   16 |  eRubro arrayRubros[] = { { 1, "Cuidado de ropa" }, { 2,
+      |         ^~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Controller.o" "..\\src\\Controller.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Articulo.o" "..\\src\\Articulo.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Parser.o" "..\\src\\Parser.c" 
+gcc -o SP_Labo1.exe "src\\Articulo.o" "src\\Controller.o" "src\\LinkedList.o" "src\\Parser.o" "src\\SP_Labo1.o" "src\\utn.o" 

@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "LinkedList.h"
+#include "Articulo.h"
+#include "Controller.h"
+#include "Parser.h"
+#include "utn.h"
+
+eArticulo articulo_new(void) {
+	return (eArticulo*) malloc(sizeof(eArticulo));
+}
+//---------------------------------------------------------------------------------------------------------------------
+int articulo_delete(eArticulo *this) {
+	int retorno = -1;
+
+	if (this != NULL) {
+		free(this);
+		retorno = 0;
+	}
+
+	return retorno;
+}
+//SETTERS--------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------
+int articulo_setId(eArticulo *this, int id) {
+	int retorno = -1;
+
+	if (this != NULL && id >= 0) {
+		this->id = id;
+		retorno = 0;
+	}
+
+	return retorno;
+}
+//---------------------------------------------------------------------------------------------------------------------
+int articulo_setIdAsString(eArticulo *this, char *id) {
+	int retorno = -1;
+
+	if (this != NULL && id >= 0) {
+		retorno = articulo_setId(this, atoi(id));
+	}
+
+	return retorno;
+}
+//---------------------------------------------------------------------------------------------------------------------
+int articulo_setArticulo(eArticulo *this, char *articulo) {
+	int retorno = -1;
+
+	if (this != NULL && articulo != NULL) {
+		strcpy(this->articulo, articulo);
+		retorno = 0;
+	}
+
+	return retorno;
+}
+//---------------------------------------------------------------------------------------------------------------------
+int articulo_setMedida(eArticulo *this, int medida) {
+	int retorno = -1;
+
+	if (this != NULL && medida >= 0) {
+		this->medida = medida;
+		retorno = 0;
+	}
+
+	return retorno;
+}
+//---------------------------------------------------------------------------------------------------------------------
+int articulo_setPrecio(eArticulo *this, float precio) {
+	int retorno = -1;
+
+	if (this != NULL && precio >= 0) {
+		this->precio = precio;
+		retorno = 0;
+	}
+
+	return retorno;
+}
+//---------------------------------------------------------------------------------------------------------------------
+eArticulo* articulo_newParametros(char *id, char *articulo, char *medida,
+		char *precio, char *idRubro) {
+	eArticulo *retorno = NULL;
+	eArticulo *pAuxArticulo;
+	if (id != NULL && articulo != NULL && medida != NULL && precio != NULL
+			&& idRubro != NULL) {
+		pAuxArticulo = new_articulo();
+		if (pAuxArticulo != NULL) {
+			if (!entrega_setIdAsString(pAuxEmpleado, id)
+					&& !entrega_setTipo(pAuxEmpleado, tipo)
+					&& !entrega_setCantidadAsString(pAuxEmpleado, cantidad)
+					&& !entrega_setImporteAsString(pAuxEmpleado, importe)) {
+				retorno = pAuxEmpleado;
+			} else {
+				entrega_delete(pAuxEmpleado);
+			}
+		}
+	}
+	return retorno;
+}

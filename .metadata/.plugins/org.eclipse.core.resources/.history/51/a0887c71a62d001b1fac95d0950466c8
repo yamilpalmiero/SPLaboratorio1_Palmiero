@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "LinkedList.h"
+#include "Articulo.h"
+
+int main(void) {
+	setbuf(stdout, NULL);
+
+	int opcion;
+	int flag = 0;
+	LinkedList *listaArticulos = ll_newLinkedList(); //Constructor que crea e inicializa la lista de artculos en memo dinamica
+	eRubro arrayRubros[] = { { 1, "Cuidado de ropa" }, { 2,
+			"Limpieza y desinfeccion" }, { 3, "Cuidado personal e higiene" }, {
+			4, "Cuidado del automotor" } };
+
+	return EXIT_SUCCESS;
+}

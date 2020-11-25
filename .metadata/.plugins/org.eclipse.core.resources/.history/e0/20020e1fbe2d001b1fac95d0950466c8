@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "LinkedList.h"
+#include "Articulo.h"
+#include "utn.h"
+
+int controller_loadFromText(char *path, LinkedList *pListaArticulos) {
+	int retorno = -1;
+	FILE *pFile = NULL;
+
+	if (path != NULL && pListaArticulos != NULL) {
+		if ((pFile = fopen(path, "r")) == NULL) {
+			printf("\nNo se pudo abrir el archivo");
+			exit(1);
+		}
+		parser_ArticuloFromText(pFile, pListaArticulos);
+		retorno = 0;
+		fclose(pFile);
+	}
+
+	return retorno;
+}

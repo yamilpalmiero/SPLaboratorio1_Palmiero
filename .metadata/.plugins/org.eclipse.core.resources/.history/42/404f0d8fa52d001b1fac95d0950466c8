@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "LinkedList.h"
+#include "Articulo.h"
+
+
+int main(void) {
+	setbuf(stdout, NULL);
+
+	int opcion;
+	int flag=0;
+	LinkedList* listaArticulos = ll_newLinkedList();//Constructor que crea e inicializa la lista de artculos en memo dinamica
+
+	return EXIT_SUCCESS;
+}

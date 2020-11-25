@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "LinkedList.h"
+#include "Articulo.h"
+#include "Controller.h"
+#include "Parser.h"
+#include "utn.h"
+
+int main(void) {
+	setbuf(stdout, NULL);
+
+	int opcionMenu;
+	int flag = 0;
+	LinkedList *pListaArticulos = ll_newLinkedList(); //Constructor que crea e inicializa la lista de artculos en memo dinamica
+	eRubro arrayRubros[] = { { 1, "Cuidado de ropa" }, { 2,
+			"Limpieza y desinfeccion" }, { 3, "Cuidado personal e higiene" }, {
+			4, "Cuidado del automotor" } };
+
+	do {
+		utn_getEntero(&opcionMenu,
+				"\n\n***MENU PRINCIPAL***\nElija una opcion:\n\n1) Cargar datos desde archivo \n2) Ordenar lista de articulos\n3) Imprimir articulos\n4) Realizar descuentos\n5) Salir\n",
+				"\nError", 1, 5, 2);
+
+		system("cls");
+
+		switch (opcionMenu) {
+		case 1:
+			if (controller_loadFromText("Datos_SP_LABO1.csv", pListaArticulos)
+					== 0) {
+				printf("\nCarga exitosa");
+				flag = 1;
+			}
+			system("pause");
+			break;
+		case 2:
+			if (flag == 0) {
+				printf("\nError, primero debe cargar la lista de articulos.");
+			}
+		}
+
+	} while (opcionMenu != 5);
+
+	return EXIT_SUCCESS;
+}
