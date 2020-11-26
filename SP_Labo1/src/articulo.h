@@ -44,3 +44,9 @@ eArticulo* articulo_newParametros(char *id, char *articulo, char *medida,
 		char *precio, char *idRubro);
 //---------------------------------------------------------------------------------------------------------------------
 int articulo_criterio(void *this1, void *this2);
+//---------------------------------------------------------------------------------------------------------------------
+int articulo_mostrarArticulos(LinkedList *pListaArticulos);
+//---------------------------------------------------------------------------------------------------------------------
+int articulo_mostrarArticulo(eArticulo *this);
+//---------------------------------------------------------------------------------------------------------------------
+void articulo_realizarDescuento(eArticulo *pArticulo);

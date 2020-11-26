@@ -35,3 +35,25 @@ int controller_sortArticulos(LinkedList *pListaArticulos) {
 
 	return retorno;
 }
+//----------------------------------------------------------------------------------------------------------------------------
+int controller_saveAsText(char *path, LinkedList *pListaArticulos) {
+	int retorno = -1;
+	FILE *pFile = NULL;
+	eArticulo *pArticulo;
+
+	if (path != NULL && pListaArticulos != NULL) {
+		pFile = fopen(path, "w");
+		if (pFile != NULL) {
+			for (int i = 0; i < ll_len(pListaArticulos); i++) {
+				pArticulo = ll_get(pListaArticulos, i);
+				if (pArticulo != NULL)
+					fwrite(pArticulo, sizeof(eArticulo), 1, pFile);
+			}
+			fclose(pFile);
+			printf("Guardado con exito.\n");
+			retorno = 0;
+		}
+	}
+
+	return retorno;
+}

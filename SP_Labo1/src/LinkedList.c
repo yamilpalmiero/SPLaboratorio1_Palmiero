@@ -467,7 +467,7 @@ int ll_sort(LinkedList *this, int (*pFunc)(void*, void*), int order) {
 	if (this != NULL && pFunc != NULL && order >= 0 && order <= 1) {
 		for (i = 0; i < (ll_len(this) - 1); i++) {
 			for (j = i + 1; j < ll_len(this); j++) {
-				if (order == 1 && pFunc(ll_get(this, i), ll_get(this, j)) > 0) {
+				if (order == 1 && pFunc(ll_get(this, i), ll_get(this, j)) > 0) { //order 1 pide ascendente y >0 es porque la funcion retorno 1, entonces el j es mas grande
 					pAux = ll_get(this, i);
 					ll_set(this, i, ll_get(this, j));
 					ll_set(this, j, pAux);
@@ -485,7 +485,7 @@ int ll_sort(LinkedList *this, int (*pFunc)(void*, void*), int order) {
 	return returnAux;
 }
 
-LinkedList* ll_map(LinkedList *this, int (*pFunc)(void *element)) {
+LinkedList* ll_map(LinkedList *this, void (*pFunc)(void *element)) {
 	int i;
 
 	if (this != NULL && pFunc != NULL) {
@@ -493,19 +493,9 @@ LinkedList* ll_map(LinkedList *this, int (*pFunc)(void *element)) {
 			pFunc(ll_get(this, i));
 		}
 	}
+
 	return this;
 }
-
-/*Ejemplo de funcion Func
- void calcularPrecioFinal(Producto* p){
-
- if(p!=NULL){
- p->precioFinal=p->precioUnitario*p->cantidad;
- }
-
- return;
- }
- */
 
 LinkedList* ll_filter(LinkedList *this, int (*fn)(void*)) {
 	LinkedList *listaFiltrada = NULL;
